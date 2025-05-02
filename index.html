@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ultimate Stylish Grading System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      width: 350px;
+      padding: 30px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 12px;
+      border: none;
+      outline: none;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.3);
+      color: #fff;
+    }
+
+    ::placeholder {
+      color: #eee;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(135deg, #f7971e, #ffd200);
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      animation: glow 1s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 20px #ffd200, 0 0 30px #f7971e; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glass-card">
+    <h2>🎓 Grade Calculator</h2>
+    <input type="number" id="marks" placeholder="Enter your marks" />
+    <button onclick="checkGrade()">Check Grade</button>
+    <div class="result" id="resultBox"></div>
+  </div>
+
+  <script>
+    function checkGrade() {
+      let mark = document.getElementById("marks").value;
+      mark = Number(mark);
+      const result = document.getElementById("resultBox");
+
+      if (mark === 0 || isNaN(mark)) {
+        result.textContent = "Please enter valid marks!";
+        result.style.color = "#ff4d4d";
+        result.style.textShadow = "none";
+      } else if (mark >= 90) {
+        result.textContent = "Your grade is 🅰️ A";
+        result.style.color = "#00ffcc";
+      } else if (mark >= 80) {
+        result.textContent = "Your grade is 🅱️ B";
+        result.style.color = "#33ccff";
+      } else if (mark >= 70) {
+        result.textContent = "Your grade is 🅲 C";
+        result.style.color = "#ffcc00";
+      } else if (mark >= 60) {
+        result.textContent = "Your grade is 🅳 D";
+        result.style.color = "#ff9966";
+      } else {
+        result.textContent = "You have failed 💀";
+        result.style.color = "#ff4d4d";
+      }
+    }
+  </script>
+
+</body>
+</html>
